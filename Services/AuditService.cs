@@ -1,6 +1,6 @@
-using TaskManageProC.Models;
+using TaskManagerProC.Models;
 
-namespace TaskManageProC.Services
+namespace TaskManagerProC.Services
 {
     public class AuditService
     {
@@ -12,7 +12,7 @@ namespace TaskManageProC.Services
             {
                 Id = _nextId++,
                 Message = Message,
-                TimeStamp = DateTime.Now
+                Timestamp = DateTime.Now
             };
             _logs.Add(log);
         }

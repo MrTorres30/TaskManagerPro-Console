@@ -1,6 +1,6 @@
-using TaskManageProC.Models;
+using TaskManagerProC.Models;
 
-namespace TaskManageProC.Services
+namespace TaskManagerProC.Services
 {
     public class TaskManager
     {
@@ -42,6 +42,19 @@ namespace TaskManageProC.Services
         task.IsCompleted = true;
         _auditService.Register($"Tarea completada: '{task.Title}' (ID: {task.Id})");
         return true;
+        }
+
+        public bool EditTask(int id, string newTitle, string newDescription)
+        {
+            var task = _tasks.FirstOrDefault(t => t.Id == id);
+             if (task is null)
+            return false;
+            task.Title       = newTitle;
+            task.Description = newDescription;
+            _auditService.Register($"Tarea editada: '{newTitle}' (ID: {task.Id})");
+            return true;
+}
+
         }
     
     }
