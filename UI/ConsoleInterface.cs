@@ -26,7 +26,7 @@ namespace TaskManagerProC.UI
 
                 if (!parsed)
                 {
-                    Console.WriteLine("\n Opción inválida. Ingresa un número del 1 al 5.\n");
+                    Console.WriteLine("\n Opción inválida. Ingresa un número del 1 al 6.\n");
                     continue;
                 }
 
@@ -36,9 +36,10 @@ namespace TaskManagerProC.UI
                     case 2: ListTasks();     break;
                     case 3: CompleteTask();  break;
                     case 4: ShowAuditLog();  break;
-                    case 5: running = false; break;
+                    case 5: EditTask(); break;
+                    case 6: running = false; break;
                     default:
-                        Console.WriteLine("\n  Opción fuera de rango. Elige entre 1 y 5.\n");
+                        Console.WriteLine("\n  Opción fuera de rango. Elige entre 1 y 6.\n");
                         break;
                 }
             }
@@ -55,7 +56,8 @@ namespace TaskManagerProC.UI
             Console.WriteLine("2. Listar todas las tareas");
             Console.WriteLine("3. Marcar tarea como completada");
             Console.WriteLine("4. Ver historial de auditoría");
-            Console.WriteLine("5. Salir");
+            Console.WriteLine("5. Editar tarea");
+            Console.WriteLine("6. Salir");
             Console.Write("\nElige una opción: ");
         }
         private void CreateTask()
@@ -65,7 +67,7 @@ namespace TaskManagerProC.UI
                 string title = Console.ReadLine() ?? string.Empty;
               if (string.IsNullOrWhiteSpace(title))
             {
-                Console.WriteLine("⚠️  El título no puede estar vacío.\n");
+                Console.WriteLine(" El título no puede estar vacío.\n");
                 return;
             }                                        
             Console.Write("Descripción: ");          
@@ -109,6 +111,32 @@ namespace TaskManagerProC.UI
             Console.WriteLine(" Tarea marcada como completada.\n");
         else
             Console.WriteLine("  No se encontró una tarea con ese ID.\n");
+        }
+        private void EditTask()
+        {  
+            Console.WriteLine("\n--- EDITAR TAREA ---");
+            Console.Write("Ingresa el ID de la tarea a editar: ");
+            string input  = Console.ReadLine() ?? string.Empty;
+            bool   parsed = int.TryParse(input, out int id);
+            if (!parsed)
+            {
+                Console.WriteLine("  El ID debe ser un número.\n");
+                return;
+            }
+            Console.Write("Nuevo título: ");
+            string newTitle = Console.ReadLine() ?? string.Empty;
+            if (string.IsNullOrWhiteSpace(newTitle))
+            {
+                Console.WriteLine("  El título no puede estar vacío.\n");
+                return;
+            }
+            Console.Write("Nueva descripción: ");
+            string newDescription = Console.ReadLine() ?? string.Empty;
+            bool success = _taskManager.EditTask(id, newTitle, newDescription);
+            if (success)
+                Console.WriteLine(" Tarea editada con éxito.\n");
+            else
+                Console.WriteLine("  No se encontró una tarea con ese ID.\n");
         }
         private void ShowAuditLog()
         {
