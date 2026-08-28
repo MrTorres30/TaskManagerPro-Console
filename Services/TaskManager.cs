@@ -53,9 +53,17 @@ namespace TaskManagerProC.Services
             task.Description = newDescription;
             _auditService.Register($"Tarea editada: '{newTitle}' (ID: {task.Id})");
             return true;
-}
-
         }
-    
+        public bool DeleteTask(int id)
+        {
+            var task = _tasks.FirstOrDefault(t => t.Id == id);
+
+            if (task is null)
+                return false;
+
+            _tasks.Remove(task);
+            _auditService.Register($"Tarea Eliminada: '{task.Title} (ID: {task.Id}) '");
+            return true;
+        }
     }
 }

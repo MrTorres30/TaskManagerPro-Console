@@ -26,7 +26,7 @@ namespace TaskManagerProC.UI
 
                 if (!parsed)
                 {
-                    Console.WriteLine("\n Opción inválida. Ingresa un número del 1 al 6.\n");
+                    Console.WriteLine("\n Opción inválida. Ingresa un número del 1 al 7.\n");
                     continue;
                 }
 
@@ -36,10 +36,11 @@ namespace TaskManagerProC.UI
                     case 2: ListTasks();     break;
                     case 3: CompleteTask();  break;
                     case 4: ShowAuditLog();  break;
-                    case 5: EditTask(); break;
-                    case 6: running = false; break;
+                    case 5: EditTask();      break;
+                    case 6: DeleteTask();    break;
+                    case 7: running = false; break;
                     default:
-                        Console.WriteLine("\n  Opción fuera de rango. Elige entre 1 y 6.\n");
+                        Console.WriteLine("\n  Opción fuera de rango. Elige entre 1 y 7.\n");
                         break;
                 }
             }
@@ -57,7 +58,8 @@ namespace TaskManagerProC.UI
             Console.WriteLine("3. Marcar tarea como completada");
             Console.WriteLine("4. Ver historial de auditoría");
             Console.WriteLine("5. Editar tarea");
-            Console.WriteLine("6. Salir");
+            Console.WriteLine("6.Eliminar tarea");
+            Console.WriteLine("7. Salir");
             Console.Write("\nElige una opción: ");
         }
         private void CreateTask()
@@ -138,20 +140,48 @@ namespace TaskManagerProC.UI
             else
                 Console.WriteLine("  No se encontró una tarea con ese ID.\n");
         }
+
+        private void DeleteTask()
+        {
+            Console.WriteLine("\n--- BORRAR TAREA ---");
+            Console.Write("Ingresa el ID de la tarea a eliminar:");
+            string input = Console.ReadLine() ?? string.Empty;
+            bool parsed = int.TryParse(input, out int id);
+            if (!parsed)
+            {
+                Console.WriteLine("El ID debe de ser un numero \n");
+                return;
+            }
+            Console.Write("¿Estás seguro que deseas eliminar esta tarea? (s/n): ");
+            string confirm = Console.ReadLine() ?? string.Empty;
+
+            if (confirm.ToLower() != "s")
+            {
+                Console.WriteLine("Eliminación cancelada. \n");
+                return;
+            }
+
+            bool success = _taskManager.DeleteTask(id);
+
+            if (success)
+                Console.WriteLine(" Tarea eliminada con éxito.\n");
+            else
+                Console.WriteLine("  No se encontró una tarea con ese ID.\n");
+        }
         private void ShowAuditLog()
         {
-        Console.WriteLine("\n--- HISTORIAL DE AUDITORÍA ---");
-        var logs = _auditService.GetAll();
-        if (logs.Count == 0)
-        {
-            Console.WriteLine("El historial está vacío.\n");
-            return;
-        }
-        foreach (var log in logs)
-        {
-            Console.WriteLine($"[{log.Timestamp:dd/MM/yyyy HH:mm:ss}] {log.Message}");
-        }
-        Console.WriteLine();
+            Console.WriteLine("\n--- HISTORIAL DE AUDITORÍA ---");
+            var logs = _auditService.GetAll();
+            if (logs.Count == 0)
+            {
+                Console.WriteLine("El historial está vacío.\n");
+                return;
+            }
+            foreach (var log in logs)
+            {
+                Console.WriteLine($"[{log.Timestamp:dd/MM/yyyy HH:mm:ss}] {log.Message}");
+            }
+            Console.WriteLine();
         }
     }
 }
