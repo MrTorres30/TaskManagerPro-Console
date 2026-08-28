@@ -1,4 +1,4 @@
-# 📌 TaskManagerPro — Core Engine
+#  TaskManagerPro — Core Engine
 
 [![.NET](https://img.shields.io/badge/.NET-8.0%2B-512BD4?style=flat&logo=dotnet&logoColor=white)](https://dotnet.microsoft.com/)
 [![C#](https://img.shields.io/badge/C%23-12.0-239120?style=flat&logo=csharp&logoColor=white)](https://learn.microsoft.com/dotnet/csharp/)
@@ -9,15 +9,15 @@
 
 ---
 
-## 🚀 Funcionalidades Principales
+##  Funcionalidades Principales
 
-- 📝 **Creación de Tareas:** Asignación automática de `Id` incremental, timestamp de creación (`CreatedAt`) y estado inicial pendiente.
-- 📋 **Listado y Visualización:** Vista detallada con estado formateado (`✅ Completada` / `⏳ Pendiente`) y fecha legible.
-- ✅ **Completado de Tareas:** Actualización de estado garantizando integridad referencial.
-- ✏️ **Edición de Tareas:** Modificación segura de título y descripción por ID.
-- 🗑️ **Eliminación Segura:** Confirmación interactiva previa al borrado (`s/n`) para evitar pérdidas accidentales.
-- 📜 **Historial de Auditoría Inmutable:** Registro cronológico de cada operación realizada en el sistema.
-- 🛡️ **Validación Defensiva (Crash-Proof):** Manejo de entradas con `int.TryParse`, validación de nulos con `string.IsNullOrWhiteSpace` y operadores *null-coalescing* (`??`).
+-  **Creación de Tareas:** Asignación automática de `Id` incremental, timestamp de creación (`CreatedAt`) y estado inicial pendiente.
+-  **Listado y Visualización:** Vista detallada con estado formateado (` Completada` / ` Pendiente`) y fecha legible.
+-  **Completado de Tareas:** Actualización de estado garantizando integridad referencial.
+-  **Edición de Tareas:** Modificación segura de título y descripción por ID.
+-  **Eliminación Segura:** Confirmación interactiva previa al borrado (`s/n`) para evitar pérdidas accidentales.
+-  **Historial de Auditoría Inmutable:** Registro cronológico de cada operación realizada en el sistema.
+-  **Validación Defensiva (Crash-Proof):** Manejo de entradas con `int.TryParse`, validación de nulos con `string.IsNullOrWhiteSpace` y operadores *null-coalescing* (`??`).
 
 ---
 
@@ -43,7 +43,7 @@ TaskManagerProC/
 └── TaskManagerProC.csproj
 ```
 
-### 🔑 Decisiones Técnicas Clave
+###  Decisiones Técnicas Clave
 
 | Concepto | Implementación | Justificación |
 |---|---|---|
@@ -56,7 +56,7 @@ TaskManagerProC/
 
 ---
 
-## 💻 Requisitos y Ejecución
+##  Requisitos y Ejecución
 
 ### Prerrequisitos
 - [.NET SDK 8.0](https://dotnet.microsoft.com/download) o superior.
@@ -76,7 +76,7 @@ TaskManagerProC/
 
 ---
 
-## 🛠️ Tecnologías
+##  Tecnologías
 
 - **Lenguaje:** C# 12
 - **Plataforma:** .NET 8.0 SDK
@@ -85,8 +85,8 @@ TaskManagerProC/
 
 ---
 
-## 👤 Autor
+##  Autor
 
-Desarrollado por **[Tu Nombre]**  
-- GitHub: [@TU_USUARIO](https://github.com/TU_USUARIO)
-- LinkedIn: [Tu Perfil](https://linkedin.com/in/tu-perfil)
+Desarrollado por **[Wilmer Torres]**  
+- GitHub: [@MrTorres30](https://github.com/MrTorres30)
+
